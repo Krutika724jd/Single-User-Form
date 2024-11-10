@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        .container {
+            border: 1px solid grey;
+            width: 30vh;
+            min-height: 30vh;
+            padding: 20px;
+            background-color: rgb(199, 216, 235);
+        }
+
+        form input,
+        button {
+            margin: 10px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <form action="">
+            <input type="text" placeholder="Enter Username" id="userName"><br>
+            <input type="email" placeholder="Enter Email" id="email"><br>
+            <input type="password" placeholder="Enter Password" id="pwd"><br>
+            <button onclick="onSubmit(event)">login</button>
+            <p>Don't have an account?<a href="Register.html">Register Here?</a></p>
+        </form>
+    </div>
+    <script>
+        function onSubmit(event) {
+            console.log(event)
+            event.preventDefault()
+            let username = document.getElementById("userName").value
+            let email = document.getElementById("email").value
+            let pwd = document.getElementById("pwd").value
+
+            let getInput = { username, email, pwd }
+            console.log(getInput)
+
+            let getFormData = localStorage.getItem("userData")
+            console.log(getFormData)
+            console.log(typeof getFormData)
+
+            let getFormData1 = JSON.parse(getFormData)
+            console.log(typeof getFormData1)
+            
+                if (getFormData1.username == username && getFormData1.email == email && getFormData1.pwd == pwd) {
+                    console.log("login Successfully");
+                    window.location.href="/home.html"
+                }else{
+                    console.log("Login Failed");
+                }
+            
+            
+
+        }
+
+    </script>
+</body>
+
+</html>

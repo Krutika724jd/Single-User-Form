@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <style>
+        .container{
+            border:1px solid grey;
+            width:30vh;
+            min-height:30vh;
+            padding:20px;
+            background-color: rgb(199, 235, 223);
+        }
+        form input,button{
+            margin:10px
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <form action="">
+        <input type="text" placeholder="Enter Username" id="userName"><br>
+        <input type="email" placeholder="Enter Email" id="email"><br>
+        <input type="password" placeholder="Enter Password" id="pwd"><br>
+        <input type="password" placeholder="Enter Confirm password" id="cpwd"><br>
+        <button onclick="onSubmit(event)">Register</button>
+        <p>Aleady have an account?<a href="SingleUserLogin.html">Login Here</a></p>
+    </form>
+</div>
+    <script>
+        function onSubmit(event){
+            console.log(event)
+            event.preventDefault()
+            let username=document.getElementById("userName").value
+            let email=document.getElementById("email").value
+            let pwd=document.getElementById("pwd").value
+            let cpwd=document.getElementById("cpwd").value
+            let getInput={username,email,pwd,cpwd}
+            console.log(getInput)
+
+            //set data into localstorage
+            localStorage.setItem("userData",JSON.stringify(getInput))
+           
+        }
+    </script>
+</body>
+</html>
